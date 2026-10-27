@@ -32,6 +32,14 @@ works, but in practice:
 A generated packet is clean and short (6 frames ≈ 0.2 s by default) and ends with
 a silence gap, so consecutive sends are received as separate presses.
 
+### Don't have the code yet?
+
+If your remote is not in any database (e.g. [Flipper-IRDB](https://github.com/Lucaslhm/Flipper-IRDB) /
+[UberGuidoZ/Flipper](https://github.com/UberGuidoZ/Flipper)), capture it once with python-broadlink's
+`broadlink_cli`: run `--rflearn` and hold a button until the frequency is found, then pass that value with
+`--frequency <MHz>` so every other button only needs a short press. Decode the 24-bit code from a capture
+(`rf2broadlink --decode` shows the pulses) and from then on generate clean packets with rf2broadlink.
+
 ## Using it in Home Assistant
 
 A button per remote key, e.g. with a template button helper or in YAML:
